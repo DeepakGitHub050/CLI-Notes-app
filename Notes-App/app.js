@@ -13,4 +13,4 @@ console.log(valid.isEmail("adgdfs@afdf.com"));
 const chalk = require("chalk");
 //const Chal = require("chalk");
 console.log(chalk.green.bold("Success!"));
-console.log(process.arg[2]);
+console.log(process.argv[2]);

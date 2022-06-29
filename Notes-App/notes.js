@@ -9,7 +9,7 @@ const addNotes = function (title, body) {
   const notes = loadNotes();
   //console.log(notes);
   const duplicateValue = notes.filter(function (note) {
-    return notes.title == title;
+    return note.title == title;
   });
   if (duplicateValue == 0) {
     notes.push({

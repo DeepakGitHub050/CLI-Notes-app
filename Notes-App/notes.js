@@ -6,12 +6,20 @@ const getNotes = function () {
 
 const addNotes = function (title, body) {
   const notes = loadNotes();
-  notes.push({
-    title: title,
-    body: body,
+  //console.log(notes);
+  const duplicateValue = notes.filter(function (note) {
+    return notes.title == title;
   });
-
-  saveNotes(notes);
+  if (duplicateValue == 0) {
+    notes.push({
+      title: title,
+      body: body,
+    });
+    saveNotes(notes);
+    console.log("Note saved");
+  } else {
+    console.log(`Notes doesn't save`);
+  }
 };
 
 const saveNotes = function (notes) {
@@ -21,7 +29,8 @@ const saveNotes = function (notes) {
 const loadNotes = function () {
   try {
     const dataBuffer = fs.readFileSync("notes.json");
-    const data = JSON.stringify(dataBuffer);
+    const data = dataBuffer.toString();
+    //console.log(JSON.parse(data));
     return JSON.parse(data);
   } catch (e) {
     return [];

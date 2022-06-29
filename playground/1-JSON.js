@@ -5,7 +5,7 @@ const book = {
 };
 
 const bookJSON = JSON.stringify(book);
-fs.writeFileSync("1-JSON.json", book);
+//fs.writeFileSync("1-JSON.json", book);
 
 //const data = fs.readFileSync("1-JSON.json").toString();
 //console.log(JSON.parse(data).title);

@@ -8,8 +8,9 @@ const getNotes = () => {
 
 const addNotes = (title, body) => {
   const notes = loadNotes();
-  const duplicateTitle = notes.filter((note) => note.title === title);
-  if (duplicateTitle.length == 0) {
+  //const duplicateTitle = notes.filter((note) => note.title === title);
+  const duplicateNote = notes.find((note) => note.title == title);
+  if (!duplicateNote) {
     notes.push({
       title: title,
       body: body,
@@ -41,6 +42,10 @@ const listNotes = () => {
   });
 };
 
+const readNotes = (title) => {
+  const notes = loadNotes();
+};
+
 const saveNotes = (notes) => {
   fs.writeFileSync("notes.json", JSON.stringify(notes));
 };
@@ -61,4 +66,5 @@ module.exports = {
   addNotes: addNotes,
   removeNote: removeNote,
   listNotes: listNotes,
+  readNotes: readNotes,
 };

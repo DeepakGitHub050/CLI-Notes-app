@@ -2,6 +2,7 @@ const fs = require("fs");
 const chalk = require("chalk");
 const Notes = require("./2-arrowFunction");
 const yargs = require("yargs");
+const { argv } = require("process");
 
 yargs.command({
   command: "add",
@@ -51,8 +52,16 @@ yargs.command({
 yargs.command({
   command: "read",
   describe: "Read notes",
-  handler() {
-    console.log("Reading all the item");
+  builder: {
+    title: {
+      describe: "Read title",
+      demandOption: true,
+      type: "string",
+    },
+  },
+  handler(argv) {
+    Notes.readNotes(argv.title);
+    //console.log("Reading all the item");
   },
 });
 

@@ -36,6 +36,7 @@ yargs.command({
     },
   },
   handler: function (argv) {
+    debugger;
     const abc = notes.addNotes(argv.title, argv.body);
     //console.log(notes);
   },
